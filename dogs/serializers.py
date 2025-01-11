@@ -1,7 +1,6 @@
 from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import ModelSerializer
 from dogs.models import Dog, Breed
-from django.db.models import Avg, Count
 
 
 class DogSerializer(ModelSerializer):
