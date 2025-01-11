@@ -3,6 +3,8 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Breed(models.Model):
+    """Модель породы собак."""
+
     name = models.CharField(max_length=255)
     size = models.CharField(max_length=10, choices=[
         ('Tiny', 'Tiny'),
@@ -40,10 +42,12 @@ class Breed(models.Model):
     )
 
     def __str__(self):
+        """Возвращает строковое представление породы."""
         return self.name
 
 
 class Dog(models.Model):
+    """Модель собаки."""
     name = models.CharField(max_length=100)
     age = models.IntegerField()
     breed = models.ForeignKey(Breed, on_delete=models.SET_NULL, null=True, blank=True)
@@ -53,4 +57,5 @@ class Dog(models.Model):
     favorite_toy = models.CharField(max_length=100)
 
     def __str__(self):
+        """Возвращает строковое представление собаки."""
         return self.name
