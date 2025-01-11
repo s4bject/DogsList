@@ -5,6 +5,7 @@ from dogs.models import Dog, Breed
 
 class DogSerializer(ModelSerializer):
     breed_count = SerializerMethodField()
+    breed = SerializerMethodField()
 
     class Meta:
         model = Dog
@@ -12,6 +13,10 @@ class DogSerializer(ModelSerializer):
 
     def get_breed_count(self, obj):
         return getattr(obj, 'breed_count', 0)
+
+    def get_breed(self,obj):
+        return obj.breed.name if obj.breed else None
+
 
 
 class BreedSerializer(ModelSerializer):
